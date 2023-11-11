@@ -6,13 +6,13 @@
 This is a Prometheus exporter for [AdguardHome](https://github.com/AdguardTeam/AdguardHome)'s Raspberry PI ad blocker.
 It is based on the famous pihole-exporter [available here](https://github.com/eko/pihole-exporter/)
 
-![Grafana dashboard](https://raw.githubusercontent.com/ebrianne/adguard-exporter/master/grafana/dashboard.png)
+![Grafana dashboard](grafana/dashboard.png)
 
-Grafana dashboard is [available here](https://grafana.com/dashboards/13330) on the Grafana dashboard website and also [here](https://raw.githubusercontent.com/ebrianne/adguard-exporter/master/grafana/dashboard.json) on the GitHub repository.
+Grafana dashboard is [available here](https://grafana.com/dashboards/13330) on the Grafana dashboard website and also [here](raw/master/grafana/dashboard.json) on the GitHub repository.
 
 ## Prerequisites
 
-* [Go](https://golang.org/doc/)
+- [Go](https://golang.org/doc/)
 
 ## Installation
 
@@ -20,23 +20,24 @@ Grafana dashboard is [available here](https://grafana.com/dashboards/13330) on t
 
 You can download the latest version of the binary built for your architecture here:
 
-* Architecture **i386** [
-[Darwin](https://github.com/ebrianne/adguard-exporter/releases/latest/download/adguard_exporter-darwin-386) /
-[Linux](https://github.com/ebrianne/adguard-exporter/releases/latest/download/adguard_exporter-linux-386) /
-[Windows](https://github.com/ebrianne/adguard-exporter/releases/latest/download/adguard_exporter-windows-386.exe)
-]
-* Architecture **amd64** [
-[Darwin](https://github.com/ebrianne/adguard-exporter/releases/latest/download/adguard_exporter-darwin-amd64) /
-[Linux](https://github.com/ebrianne/adguard-exporter/releases/latest/download/adguard_exporter-linux-amd64) /
-[Windows](https://github.com/ebrianne/adguard-exporter/releases/latest/download/adguard_exporter-windows-amd64.exe)
-]
-* Architecture **arm** [
-[Linux](https://github.com/ebrianne/adguard-exporter/releases/latest/download/adguard_exporter-linux-arm)
-]
+- Architecture **i386** [
+  [Darwin](https://github.com/ebrianne/adguard-exporter/releases/latest/download/adguard_exporter-darwin-386) /
+  [Linux](https://github.com/ebrianne/adguard-exporter/releases/latest/download/adguard_exporter-linux-386) /
+  [Windows](https://github.com/ebrianne/adguard-exporter/releases/latest/download/adguard_exporter-windows-386.exe)
+  ]
+- Architecture **amd64** [
+  [Darwin](https://github.com/ebrianne/adguard-exporter/releases/latest/download/adguard_exporter-darwin-amd64) /
+  [Linux](https://github.com/ebrianne/adguard-exporter/releases/latest/download/adguard_exporter-linux-amd64) /
+  [Windows](https://github.com/ebrianne/adguard-exporter/releases/latest/download/adguard_exporter-windows-amd64.exe)
+  ]
+- Architecture **arm** [
+  [Linux](https://github.com/ebrianne/adguard-exporter/releases/latest/download/adguard_exporter-linux-arm)
+  ]
 
 ### From sources
 
 Optionally, you can download and build it from the sources. You have to retrieve the project sources by using one of the following way:
+
 ```bash
 $ go get -u github.com/ebrianne/adguard-exporter
 # or
@@ -50,6 +51,7 @@ $ GO111MODULE=on go mod vendor
 ```
 
 Then, build the binary (here, an example to run on Raspberry PI ARM architecture):
+
 ```bash
 $ GOOS=linux GOARCH=arm GOARM=7 go build -o adguard_exporter .
 ```
@@ -102,6 +104,7 @@ scrape_configs:
 ```
 
 ## Available CLI options
+
 ```bash
 # Interval of time the exporter will fetch data from Adguard
 -interval duration (optional) (default 10s)
@@ -127,17 +130,17 @@ scrape_configs:
 
 ## Available Prometheus metrics
 
-| Metric name                       | Description                                                          |
-|:---------------------------------:|----------------------------------------------------------------------|
-| adguard_avg_processing_time       | This represent the average DNS query processing time                 |
-| adguard_num_blocked_filtering     | This represent the number of blocked DNS queries                     |
-| adguard_num_dns_queries           | This represent the number of DNS queries                             |
-| adguard_num_replaced_parental     | This represent the number of blocked DNS queries (parental)          |
-| adguard_num_replaced_safebrowsing | This represent the number of blocked DNS queries (safe browsing)     |
-| adguard_num_replaced_safesearch   | This represent the number of blocked DNS queries (safe search)       |
-| adguard_top_blocked_domains       | This represent the top blocked domains                               |
-| adguard_top_clients               | This represent the top clients                                       |
-| adguard_top_queried_domains       | This represent the top domains that are queried                      |
-| adguard_query_types               | This represent the types of DNS queries                              |
-| running                           | Is Adguard running?                                                  |
-| protection_enabled                | Is the protection enabled?                                           |
+|            Metric name            | Description                                                      |
+| :-------------------------------: | ---------------------------------------------------------------- |
+|    adguard_avg_processing_time    | This represent the average DNS query processing time             |
+|   adguard_num_blocked_filtering   | This represent the number of blocked DNS queries                 |
+|      adguard_num_dns_queries      | This represent the number of DNS queries                         |
+|   adguard_num_replaced_parental   | This represent the number of blocked DNS queries (parental)      |
+| adguard_num_replaced_safebrowsing | This represent the number of blocked DNS queries (safe browsing) |
+|  adguard_num_replaced_safesearch  | This represent the number of blocked DNS queries (safe search)   |
+|    adguard_top_blocked_domains    | This represent the top blocked domains                           |
+|        adguard_top_clients        | This represent the top clients                                   |
+|    adguard_top_queried_domains    | This represent the top domains that are queried                  |
+|        adguard_query_types        | This represent the types of DNS queries                          |
+|              running              | Is Adguard running?                                              |
+|        protection_enabled         | Is the protection enabled?                                       |
