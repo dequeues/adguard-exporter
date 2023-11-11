@@ -118,6 +118,9 @@ scrape_configs:
 # Username to login to Adguard Home
 -adguard_username string (optional)
 
+# Adguard port if not running on port 80
+-adguard_port string (optional) (default "80")
+
 # Password defined on the Adguard interface
 -adguard_password string (optional)
 
