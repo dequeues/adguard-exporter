@@ -147,3 +147,7 @@ scrape_configs:
 |        adguard_query_types        | This represent the types of DNS queries                          |
 |              running              | Is Adguard running?                                              |
 |        protection_enabled         | Is the protection enabled?                                       |
+
+## Credits
+
+Eldwan Brianne for the original source
