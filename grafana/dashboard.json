@@ -1,57 +1,12 @@
 {
-  "__inputs": [
-    {
-      "name": "DS_PROMETHEUS",
-      "label": "Prometheus",
-      "description": "",
-      "type": "datasource",
-      "pluginId": "prometheus",
-      "pluginName": "Prometheus"
-    }
-  ],
-  "__requires": [
-    {
-      "type": "grafana",
-      "id": "grafana",
-      "name": "Grafana",
-      "version": "7.3.1"
-    },
-    {
-      "type": "panel",
-      "id": "grafana-piechart-panel",
-      "name": "Pie Chart",
-      "version": "1.5.0"
-    },
-    {
-      "type": "panel",
-      "id": "graph",
-      "name": "Graph",
-      "version": ""
-    },
-    {
-      "type": "datasource",
-      "id": "prometheus",
-      "name": "Prometheus",
-      "version": "1.0.0"
-    },
-    {
-      "type": "panel",
-      "id": "stat",
-      "name": "Stat",
-      "version": ""
-    },
-    {
-      "type": "panel",
-      "id": "table-old",
-      "name": "Table (old)",
-      "version": ""
-    }
-  ],
   "annotations": {
     "list": [
       {
         "builtIn": 1,
-        "datasource": "${DS_PROMETHEUS}",
+        "datasource": {
+          "type": "prometheus",
+          "uid": "c4a2f5cb-0b86-4c06-90ac-e1835ffce310"
+        },
         "enable": true,
         "hide": true,
         "iconColor": "rgba(0, 211, 255, 1)",
@@ -62,15 +17,19 @@
   },
   "description": "This is a Adguard dashboard when using the https://github.com/ebrianne/adguard-exporter Prometheus exporter",
   "editable": true,
-  "gnetId": 10176,
+  "fiscalYearStartMonth": 0,
+  "gnetId": 13330,
   "graphTooltip": 0,
-  "id": null,
-  "iteration": 1604507904334,
+  "id": 1,
   "links": [],
+  "liveNow": false,
   "panels": [
     {
       "collapsed": false,
-      "datasource": "${DS_PROMETHEUS}",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "c4a2f5cb-0b86-4c06-90ac-e1835ffce310"
+      },
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -79,37 +38,43 @@
       },
       "id": 60,
       "panels": [],
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "c4a2f5cb-0b86-4c06-90ac-e1835ffce310"
+          },
+          "refId": "A"
+        }
+      ],
       "title": "AdGuard Home",
       "type": "row"
     },
     {
-      "cacheTimeout": null,
-      "datasource": "${DS_PROMETHEUS}",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "c4a2f5cb-0b86-4c06-90ac-e1835ffce310"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
             "mode": "thresholds"
           },
-          "custom": {},
           "mappings": [
             {
-              "id": 0,
-              "op": "=",
-              "text": "Stopped",
-              "type": 1,
-              "value": "0"
-            },
-            {
-              "id": 1,
-              "op": "=",
-              "text": "Enabled",
-              "type": 1,
-              "value": "1"
+              "options": {
+                "0": {
+                  "text": "Stopped"
+                },
+                "1": {
+                  "text": "Enabled"
+                }
+              },
+              "type": "value"
             }
           ],
           "max": 1,
           "min": 0,
-          "nullValueMode": "connected",
           "thresholds": {
             "mode": "absolute",
             "steps": [
@@ -134,7 +99,6 @@
         "y": 1
       },
       "id": 84,
-      "interval": null,
       "links": [],
       "maxDataPoints": 100,
       "options": {
@@ -151,9 +115,13 @@
         },
         "textMode": "value"
       },
-      "pluginVersion": "7.3.1",
+      "pluginVersion": "10.2.0",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "c4a2f5cb-0b86-4c06-90ac-e1835ffce310"
+          },
           "expr": "adguard_running{hostname=~'$node'}",
           "format": "time_series",
           "interval": "",
@@ -162,40 +130,35 @@
           "refId": "A"
         }
       ],
-      "timeFrom": null,
-      "timeShift": null,
       "title": "Status",
       "transparent": true,
       "type": "stat"
     },
     {
-      "cacheTimeout": null,
-      "datasource": "${DS_PROMETHEUS}",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "c4a2f5cb-0b86-4c06-90ac-e1835ffce310"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
             "mode": "thresholds"
           },
-          "custom": {},
           "mappings": [
             {
-              "id": 0,
-              "op": "=",
-              "text": "Stopped",
-              "type": 1,
-              "value": "0"
-            },
-            {
-              "id": 1,
-              "op": "=",
-              "text": "Enabled",
-              "type": 1,
-              "value": "1"
+              "options": {
+                "0": {
+                  "text": "Stopped"
+                },
+                "1": {
+                  "text": "Enabled"
+                }
+              },
+              "type": "value"
             }
           ],
           "max": 1,
           "min": 0,
-          "nullValueMode": "connected",
           "thresholds": {
             "mode": "absolute",
             "steps": [
@@ -220,7 +183,6 @@
         "y": 1
       },
       "id": 102,
-      "interval": null,
       "links": [],
       "maxDataPoints": 100,
       "options": {
@@ -237,9 +199,13 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "7.3.1",
+      "pluginVersion": "10.2.0",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "c4a2f5cb-0b86-4c06-90ac-e1835ffce310"
+          },
           "expr": "adguard_protection_enabled{hostname=~'$node'}",
           "format": "time_series",
           "interval": "",
@@ -248,26 +214,24 @@
           "refId": "A"
         }
       ],
-      "timeFrom": null,
-      "timeShift": null,
       "title": "Protection",
       "transparent": true,
       "type": "stat"
     },
     {
-      "cacheTimeout": null,
-      "datasource": "${DS_PROMETHEUS}",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "c4a2f5cb-0b86-4c06-90ac-e1835ffce310"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
             "mode": "thresholds"
           },
-          "custom": {},
           "decimals": 2,
           "mappings": [],
           "max": 1,
           "min": 0,
-          "nullValueMode": "connected",
           "thresholds": {
             "mode": "absolute",
             "steps": [
@@ -296,7 +260,6 @@
         "y": 1
       },
       "id": 101,
-      "interval": null,
       "links": [],
       "maxDataPoints": 100,
       "options": {
@@ -313,9 +276,13 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "7.3.1",
+      "pluginVersion": "10.2.0",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "c4a2f5cb-0b86-4c06-90ac-e1835ffce310"
+          },
           "expr": "adguard_avg_processing_time{hostname=~'$node'}",
           "format": "time_series",
           "interval": "",
@@ -324,31 +291,31 @@
           "refId": "A"
         }
       ],
-      "timeFrom": null,
-      "timeShift": null,
       "title": "Processing TIme",
       "transparent": true,
       "type": "stat"
     },
     {
-      "cacheTimeout": null,
-      "datasource": "${DS_PROMETHEUS}",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "c4a2f5cb-0b86-4c06-90ac-e1835ffce310"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
             "mode": "fixed"
           },
-          "custom": {},
           "mappings": [
             {
-              "id": 0,
-              "op": "=",
-              "text": "N/A",
-              "type": 1,
-              "value": "null"
+              "options": {
+                "match": "null",
+                "result": {
+                  "text": "N/A"
+                }
+              },
+              "type": "special"
             }
           ],
-          "nullValueMode": "connected",
           "thresholds": {
             "mode": "absolute",
             "steps": [
@@ -369,7 +336,6 @@
         "y": 1
       },
       "id": 82,
-      "interval": null,
       "links": [],
       "maxDataPoints": 100,
       "options": {
@@ -386,9 +352,13 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "7.3.1",
+      "pluginVersion": "10.2.0",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "c4a2f5cb-0b86-4c06-90ac-e1835ffce310"
+          },
           "expr": "adguard_num_dns_queries{hostname=~'$node'}",
           "format": "time_series",
           "interval": "",
@@ -397,23 +367,21 @@
           "refId": "A"
         }
       ],
-      "timeFrom": null,
-      "timeShift": null,
       "title": "Number of queries",
       "transparent": true,
       "type": "stat"
     },
     {
-      "cacheTimeout": null,
-      "datasource": "${DS_PROMETHEUS}",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "c4a2f5cb-0b86-4c06-90ac-e1835ffce310"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
             "mode": "fixed"
           },
-          "custom": {},
           "mappings": [],
-          "nullValueMode": "connected",
           "thresholds": {
             "mode": "absolute",
             "steps": [
@@ -434,7 +402,6 @@
         "y": 1
       },
       "id": 80,
-      "interval": null,
       "links": [],
       "maxDataPoints": 100,
       "options": {
@@ -451,9 +418,13 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "7.3.1",
+      "pluginVersion": "10.2.0",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "c4a2f5cb-0b86-4c06-90ac-e1835ffce310"
+          },
           "expr": "adguard_num_blocked_filtering{hostname=~'$node'}",
           "format": "time_series",
           "interval": "",
@@ -462,27 +433,23 @@
           "refId": "A"
         }
       ],
-      "timeFrom": null,
-      "timeShift": null,
       "title": "Domains being blocked",
       "transparent": true,
       "type": "stat"
     },
     {
-      "cacheTimeout": null,
-      "datasource": "${DS_PROMETHEUS}",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "c4a2f5cb-0b86-4c06-90ac-e1835ffce310"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
             "mode": "thresholds"
           },
-          "custom": {
-            "align": null,
-            "filterable": false
-          },
           "decimals": 2,
           "mappings": [],
-          "max": "100",
+          "max": 100,
           "min": 0,
           "thresholds": {
             "mode": "absolute",
@@ -512,7 +479,6 @@
         "y": 1
       },
       "id": 92,
-      "interval": null,
       "links": [],
       "maxDataPoints": 1000,
       "options": {
@@ -529,9 +495,13 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "7.3.1",
+      "pluginVersion": "10.2.0",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "c4a2f5cb-0b86-4c06-90ac-e1835ffce310"
+          },
           "expr": "adguard_num_blocked_filtering{hostname=~'$node'} / adguard_num_dns_queries{hostname=~'$node'} * 100",
           "format": "time_series",
           "instant": false,
@@ -541,29 +511,34 @@
           "refId": "A"
         }
       ],
-      "timeFrom": null,
-      "timeShift": null,
       "title": "Percent of ads blocked",
       "transparent": true,
       "type": "stat"
     },
     {
-      "aliasColors": {},
-      "breakPoint": "50%",
-      "cacheTimeout": null,
-      "combine": {
-        "label": "Others",
-        "threshold": 0
+      "datasource": {
+        "type": "prometheus",
+        "uid": "c4a2f5cb-0b86-4c06-90ac-e1835ffce310"
       },
-      "datasource": "${DS_PROMETHEUS}",
       "fieldConfig": {
         "defaults": {
-          "custom": {}
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            }
+          },
+          "decimals": 0,
+          "fieldMinMax": false,
+          "mappings": [],
+          "unit": "short"
         },
         "overrides": []
       },
-      "fontSize": "80%",
-      "format": "short",
       "gridPos": {
         "h": 7,
         "w": 3,
@@ -571,54 +546,89 @@
         "y": 1
       },
       "id": 95,
-      "interval": null,
-      "legend": {
-        "percentage": true,
-        "show": false,
-        "values": true
-      },
-      "legendType": "On graph",
       "links": [],
       "maxDataPoints": 3,
-      "nullPointMode": "connected",
-      "pieType": "donut",
+      "options": {
+        "displayLabels": [
+          "name",
+          "value",
+          "percent"
+        ],
+        "legend": {
+          "calcs": [],
+          "displayMode": "table",
+          "placement": "right",
+          "showLegend": false,
+          "values": [
+            "value",
+            "percent"
+          ]
+        },
+        "pieType": "donut",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
       "pluginVersion": "7.3.1",
-      "strokeWidth": 1,
       "targets": [
         {
-          "expr": "adguard_top_queried_domains{hostname=~'$node'}",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "c4a2f5cb-0b86-4c06-90ac-e1835ffce310"
+          },
+          "editorMode": "code",
+          "exemplar": false,
+          "expr": "topk(25, adguard_top_queried_domains{hostname=~'$node'})",
           "format": "time_series",
           "instant": false,
           "interval": "",
           "intervalFactor": 1,
           "legendFormat": "{{ domain }}",
+          "range": true,
           "refId": "A"
         }
       ],
-      "timeFrom": null,
-      "timeShift": null,
       "title": "Top queries by domain",
+      "transformations": [
+        {
+          "id": "limit",
+          "options": {}
+        }
+      ],
       "transparent": true,
-      "type": "grafana-piechart-panel",
-      "valueName": "avg"
+      "type": "piechart"
     },
     {
-      "aliasColors": {},
-      "breakPoint": "50%",
-      "cacheTimeout": null,
-      "combine": {
-        "label": "Others",
-        "threshold": 0
+      "datasource": {
+        "type": "prometheus",
+        "uid": "c4a2f5cb-0b86-4c06-90ac-e1835ffce310"
       },
-      "datasource": "${DS_PROMETHEUS}",
       "fieldConfig": {
         "defaults": {
-          "custom": {}
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            }
+          },
+          "decimals": 0,
+          "mappings": [],
+          "unit": "short"
         },
         "overrides": []
       },
-      "fontSize": "80%",
-      "format": "short",
       "gridPos": {
         "h": 7,
         "w": 3,
@@ -626,22 +636,46 @@
         "y": 1
       },
       "id": 99,
-      "interval": null,
-      "legend": {
-        "percentage": true,
-        "show": false,
-        "values": true
-      },
-      "legendType": "On graph",
       "links": [],
       "maxDataPoints": 3,
-      "nullPointMode": "connected",
-      "pieType": "donut",
+      "options": {
+        "displayLabels": [
+          "name",
+          "value",
+          "percent"
+        ],
+        "legend": {
+          "calcs": [],
+          "displayMode": "table",
+          "placement": "right",
+          "showLegend": false,
+          "values": [
+            "value",
+            "percent"
+          ]
+        },
+        "pieType": "donut",
+        "reduceOptions": {
+          "calcs": [
+            "mean"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
       "pluginVersion": "7.3.1",
-      "strokeWidth": 1,
       "targets": [
         {
-          "expr": "adguard_top_blocked_domains{hostname=~'$node'}",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "c4a2f5cb-0b86-4c06-90ac-e1835ffce310"
+          },
+          "editorMode": "code",
+          "expr": "topk(25, adguard_top_blocked_domains{hostname=~'$node'})",
           "format": "time_series",
           "instant": false,
           "interval": "",
@@ -650,12 +684,9 @@
           "refId": "A"
         }
       ],
-      "timeFrom": null,
-      "timeShift": null,
       "title": "Top ads by domain",
       "transparent": true,
-      "type": "grafana-piechart-panel",
-      "valueName": "avg"
+      "type": "piechart"
     },
     {
       "aliasColors": {
@@ -664,12 +695,9 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "${DS_PROMETHEUS}",
-      "fieldConfig": {
-        "defaults": {
-          "custom": {}
-        },
-        "overrides": []
+      "datasource": {
+        "type": "prometheus",
+        "uid": "c4a2f5cb-0b86-4c06-90ac-e1835ffce310"
       },
       "fill": 1,
       "fillGradient": 0,
@@ -698,7 +726,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.3.1",
+      "pluginVersion": "10.2.0",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -708,6 +736,10 @@
       "steppedLine": false,
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "c4a2f5cb-0b86-4c06-90ac-e1835ffce310"
+          },
           "expr": "adguard_num_dns_queries{hostname=~'$node'}",
           "format": "time_series",
           "interval": "",
@@ -717,9 +749,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "DNS queries all of types",
       "tooltip": {
         "shared": true,
@@ -729,9 +759,7 @@
       "transparent": true,
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
@@ -739,25 +767,18 @@
         {
           "$$hashKey": "object:100",
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         },
         {
           "$$hashKey": "object:101",
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
@@ -765,12 +786,9 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "${DS_PROMETHEUS}",
-      "fieldConfig": {
-        "defaults": {
-          "custom": {}
-        },
-        "overrides": []
+      "datasource": {
+        "type": "prometheus",
+        "uid": "c4a2f5cb-0b86-4c06-90ac-e1835ffce310"
       },
       "fill": 1,
       "fillGradient": 0,
@@ -798,7 +816,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.3.1",
+      "pluginVersion": "10.2.0",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -808,6 +826,10 @@
       "steppedLine": false,
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "c4a2f5cb-0b86-4c06-90ac-e1835ffce310"
+          },
           "expr": "adguard_query_types{hostname=~'$node'}",
           "interval": "",
           "legendFormat": "{{ type }}",
@@ -815,9 +837,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "DNS Query Types",
       "tooltip": {
         "shared": true,
@@ -827,52 +847,49 @@
       "transparent": true,
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
       "yaxes": [
         {
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         },
         {
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
-      "aliasColors": {},
-      "breakPoint": "50%",
-      "cacheTimeout": null,
-      "combine": {
-        "label": "Others",
-        "threshold": 0
+      "datasource": {
+        "type": "prometheus",
+        "uid": "c4a2f5cb-0b86-4c06-90ac-e1835ffce310"
       },
-      "datasource": "${DS_PROMETHEUS}",
       "fieldConfig": {
         "defaults": {
-          "custom": {}
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            }
+          },
+          "decimals": 0,
+          "mappings": [],
+          "unit": "short"
         },
         "overrides": []
       },
-      "fontSize": "80%",
-      "format": "short",
       "gridPos": {
         "h": 7,
         "w": 3,
@@ -880,21 +897,45 @@
         "y": 8
       },
       "id": 100,
-      "interval": null,
-      "legend": {
-        "percentage": true,
-        "show": false,
-        "values": true
-      },
-      "legendType": "On graph",
       "links": [],
       "maxDataPoints": 3,
-      "nullPointMode": "connected",
-      "pieType": "donut",
+      "options": {
+        "displayLabels": [
+          "name",
+          "value",
+          "percent"
+        ],
+        "legend": {
+          "calcs": [],
+          "displayMode": "table",
+          "placement": "right",
+          "showLegend": false,
+          "values": [
+            "value",
+            "percent"
+          ]
+        },
+        "pieType": "donut",
+        "reduceOptions": {
+          "calcs": [
+            "mean"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
       "pluginVersion": "7.3.1",
-      "strokeWidth": 1,
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "c4a2f5cb-0b86-4c06-90ac-e1835ffce310"
+          },
+          "editorMode": "code",
           "expr": "adguard_query_types{hostname=~'$node'}",
           "format": "time_series",
           "instant": false,
@@ -904,30 +945,33 @@
           "refId": "A"
         }
       ],
-      "timeFrom": null,
-      "timeShift": null,
       "title": "Replies by type",
       "transparent": true,
-      "type": "grafana-piechart-panel",
-      "valueName": "avg"
+      "type": "piechart"
     },
     {
-      "aliasColors": {},
-      "breakPoint": "50%",
-      "cacheTimeout": null,
-      "combine": {
-        "label": "Others",
-        "threshold": 0
+      "datasource": {
+        "type": "prometheus",
+        "uid": "c4a2f5cb-0b86-4c06-90ac-e1835ffce310"
       },
-      "datasource": "${DS_PROMETHEUS}",
       "fieldConfig": {
         "defaults": {
-          "custom": {}
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            }
+          },
+          "decimals": 0,
+          "mappings": [],
+          "unit": "short"
         },
         "overrides": []
       },
-      "fontSize": "80%",
-      "format": "short",
       "gridPos": {
         "h": 7,
         "w": 3,
@@ -935,21 +979,45 @@
         "y": 8
       },
       "id": 98,
-      "interval": null,
-      "legend": {
-        "percentage": true,
-        "show": false,
-        "values": true
-      },
-      "legendType": "On graph",
       "links": [],
       "maxDataPoints": 3,
-      "nullPointMode": "connected",
-      "pieType": "donut",
+      "options": {
+        "displayLabels": [
+          "name",
+          "value",
+          "percent"
+        ],
+        "legend": {
+          "calcs": [],
+          "displayMode": "table",
+          "placement": "right",
+          "showLegend": false,
+          "values": [
+            "value",
+            "percent"
+          ]
+        },
+        "pieType": "donut",
+        "reduceOptions": {
+          "calcs": [
+            "mean"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
       "pluginVersion": "7.3.1",
-      "strokeWidth": 1,
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "c4a2f5cb-0b86-4c06-90ac-e1835ffce310"
+          },
+          "editorMode": "code",
           "expr": "adguard_top_clients{hostname=~'$node'}",
           "format": "time_series",
           "instant": false,
@@ -959,12 +1027,9 @@
           "refId": "A"
         }
       ],
-      "timeFrom": null,
-      "timeShift": null,
       "title": "Top clients by source",
       "transparent": true,
-      "type": "grafana-piechart-panel",
-      "valueName": "avg"
+      "type": "piechart"
     },
     {
       "aliasColors": {
@@ -973,12 +1038,9 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "${DS_PROMETHEUS}",
-      "fieldConfig": {
-        "defaults": {
-          "custom": {}
-        },
-        "overrides": []
+      "datasource": {
+        "type": "prometheus",
+        "uid": "c4a2f5cb-0b86-4c06-90ac-e1835ffce310"
       },
       "fill": 1,
       "fillGradient": 0,
@@ -1008,7 +1070,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.3.1",
+      "pluginVersion": "10.2.0",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -1018,6 +1080,10 @@
       "steppedLine": false,
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "c4a2f5cb-0b86-4c06-90ac-e1835ffce310"
+          },
           "expr": "adguard_num_blocked_filtering{hostname=~'$node'}",
           "format": "time_series",
           "interval": "",
@@ -1027,9 +1093,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Ads blocked",
       "tooltip": {
         "shared": true,
@@ -1039,9 +1103,7 @@
       "transparent": true,
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
@@ -1049,37 +1111,88 @@
         {
           "$$hashKey": "object:302",
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         },
         {
           "$$hashKey": "object:303",
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
-      "columns": [],
-      "datasource": "${DS_PROMETHEUS}",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "c4a2f5cb-0b86-4c06-90ac-e1835ffce310"
+      },
       "fieldConfig": {
         "defaults": {
-          "custom": {}
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "align": "auto",
+            "cellOptions": {
+              "type": "auto"
+            },
+            "inspect": false
+          },
+          "decimals": 2,
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "short"
         },
-        "overrides": []
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Time"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Time"
+              },
+              {
+                "id": "unit",
+                "value": "time: YYYY-MM-DD HH:mm:ss"
+              },
+              {
+                "id": "custom.align"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Value (lastNotNull)"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Amount"
+              }
+            ]
+          }
+        ]
       },
-      "fontSize": "100%",
       "gridPos": {
         "h": 9,
         "w": 13,
@@ -1088,53 +1201,84 @@
       },
       "id": 93,
       "links": [],
-      "pageSize": null,
-      "scroll": true,
-      "showHeader": true,
-      "sort": {
-        "col": 0,
-        "desc": true
-      },
-      "styles": [
-        {
-          "alias": "Time",
-          "align": "auto",
-          "dateFormat": "YYYY-MM-DD HH:mm:ss",
-          "pattern": "Time",
-          "type": "date"
-        },
-        {
-          "alias": "",
-          "align": "auto",
-          "colorMode": null,
-          "colors": [
-            "rgba(245, 54, 54, 0.9)",
-            "rgba(237, 129, 40, 0.89)",
-            "rgba(50, 172, 45, 0.97)"
+      "options": {
+        "cellHeight": "sm",
+        "footer": {
+          "countRows": false,
+          "fields": "",
+          "reducer": [
+            "sum"
           ],
-          "decimals": 2,
-          "pattern": "/.*/",
-          "thresholds": [],
-          "type": "number",
-          "unit": "short"
-        }
-      ],
+          "show": false
+        },
+        "showHeader": true,
+        "sortBy": [
+          {
+            "desc": true,
+            "displayName": "Value (lastNotNull)"
+          }
+        ]
+      },
+      "pluginVersion": "10.2.0",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "c4a2f5cb-0b86-4c06-90ac-e1835ffce310"
+          },
+          "editorMode": "code",
           "expr": "adguard_top_clients{hostname=~'$node'}",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
           "legendFormat": "{{ client }}",
+          "range": true,
           "refId": "A"
         }
       ],
-      "timeFrom": null,
-      "timeShift": null,
       "title": "Top clients",
-      "transform": "timeseries_to_rows",
+      "transformations": [
+        {
+          "id": "seriesToRows",
+          "options": {
+            "reducers": []
+          }
+        },
+        {
+          "id": "sortBy",
+          "options": {
+            "fields": {},
+            "sort": [
+              {
+                "desc": true,
+                "field": "Value"
+              }
+            ]
+          }
+        },
+        {
+          "id": "groupBy",
+          "options": {
+            "fields": {
+              "Metric": {
+                "aggregations": [],
+                "operation": "groupby"
+              },
+              "Time": {
+                "aggregations": []
+              },
+              "Value": {
+                "aggregations": [
+                  "lastNotNull"
+                ],
+                "operation": "aggregate"
+              }
+            }
+          }
+        }
+      ],
       "transparent": true,
-      "type": "table-old"
+      "type": "table"
     },
     {
       "aliasColors": {
@@ -1143,12 +1287,9 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "${DS_PROMETHEUS}",
-      "fieldConfig": {
-        "defaults": {
-          "custom": {}
-        },
-        "overrides": []
+      "datasource": {
+        "type": "prometheus",
+        "uid": "c4a2f5cb-0b86-4c06-90ac-e1835ffce310"
       },
       "fill": 1,
       "fillGradient": 0,
@@ -1177,7 +1318,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.3.1",
+      "pluginVersion": "10.2.0",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -1187,6 +1328,10 @@
       "steppedLine": false,
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "c4a2f5cb-0b86-4c06-90ac-e1835ffce310"
+          },
           "expr": "adguard_num_blocked_filtering{hostname=~'$node'} / adguard_num_dns_queries{hostname=~'$node'} * 100",
           "format": "time_series",
           "interval": "",
@@ -1196,9 +1341,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "% of ads blocked",
       "tooltip": {
         "shared": true,
@@ -1208,9 +1351,7 @@
       "transparent": true,
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
@@ -1218,37 +1359,87 @@
         {
           "$$hashKey": "object:355",
           "format": "percent",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         },
         {
           "$$hashKey": "object:356",
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
-      "columns": [],
-      "datasource": "${DS_PROMETHEUS}",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "c4a2f5cb-0b86-4c06-90ac-e1835ffce310"
+      },
       "fieldConfig": {
         "defaults": {
-          "custom": {}
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "cellOptions": {
+              "type": "auto"
+            },
+            "inspect": false
+          },
+          "decimals": 2,
+          "displayName": "",
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green"
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "short"
         },
-        "overrides": []
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Time"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Time"
+              },
+              {
+                "id": "unit",
+                "value": "time: YYYY-MM-DD HH:mm:ss"
+              },
+              {
+                "id": "custom.align"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Value (lastNotNull)"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Amount"
+              }
+            ]
+          }
+        ]
       },
-      "fontSize": "100%",
       "gridPos": {
         "h": 10,
         "w": 13,
@@ -1257,39 +1448,31 @@
       },
       "id": 90,
       "links": [],
-      "pageSize": null,
-      "scroll": true,
-      "showHeader": true,
-      "sort": {
-        "col": 0,
-        "desc": true
-      },
-      "styles": [
-        {
-          "alias": "Time",
-          "align": "auto",
-          "dateFormat": "YYYY-MM-DD HH:mm:ss",
-          "pattern": "Time",
-          "type": "date"
-        },
-        {
-          "alias": "",
-          "align": "auto",
-          "colorMode": null,
-          "colors": [
-            "rgba(245, 54, 54, 0.9)",
-            "rgba(237, 129, 40, 0.89)",
-            "rgba(50, 172, 45, 0.97)"
+      "options": {
+        "cellHeight": "sm",
+        "footer": {
+          "countRows": false,
+          "fields": "",
+          "reducer": [
+            "sum"
           ],
-          "decimals": 2,
-          "pattern": "/.*/",
-          "thresholds": [],
-          "type": "number",
-          "unit": "short"
-        }
-      ],
+          "show": false
+        },
+        "showHeader": true,
+        "sortBy": [
+          {
+            "desc": false,
+            "displayName": "Value"
+          }
+        ]
+      },
+      "pluginVersion": "10.2.0",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "c4a2f5cb-0b86-4c06-90ac-e1835ffce310"
+          },
           "expr": "adguard_top_blocked_domains{hostname=~'$node'}",
           "format": "time_series",
           "interval": "",
@@ -1298,21 +1481,52 @@
           "refId": "A"
         }
       ],
-      "timeFrom": null,
-      "timeShift": null,
       "title": "Top ads domains",
-      "transform": "timeseries_to_rows",
+      "transformations": [
+        {
+          "id": "seriesToRows",
+          "options": {
+            "reducers": []
+          }
+        },
+        {
+          "id": "groupBy",
+          "options": {
+            "fields": {
+              "Metric": {
+                "aggregations": [],
+                "operation": "groupby"
+              },
+              "Value": {
+                "aggregations": [
+                  "lastNotNull"
+                ],
+                "operation": "aggregate"
+              }
+            }
+          }
+        },
+        {
+          "id": "sortBy",
+          "options": {
+            "fields": {},
+            "sort": [
+              {
+                "desc": true,
+                "field": "Value (lastNotNull)"
+              }
+            ]
+          }
+        }
+      ],
       "transparent": true,
-      "type": "table-old"
+      "type": "table"
     },
     {
       "columns": [],
-      "datasource": "${DS_PROMETHEUS}",
-      "fieldConfig": {
-        "defaults": {
-          "custom": {}
-        },
-        "overrides": []
+      "datasource": {
+        "type": "prometheus",
+        "uid": "c4a2f5cb-0b86-4c06-90ac-e1835ffce310"
       },
       "fontSize": "100%",
       "gridPos": {
@@ -1323,7 +1537,6 @@
       },
       "id": 74,
       "links": [],
-      "pageSize": null,
       "scroll": true,
       "showHeader": true,
       "sort": {
@@ -1334,7 +1547,6 @@
         {
           "alias": "",
           "align": "auto",
-          "colorMode": null,
           "colors": [
             "rgba(245, 54, 54, 0.9)",
             "rgba(237, 129, 40, 0.89)",
@@ -1352,6 +1564,10 @@
       ],
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "c4a2f5cb-0b86-4c06-90ac-e1835ffce310"
+          },
           "expr": "adguard_top_queried_domains{hostname=~'$node'}",
           "format": "time_series",
           "instant": false,
@@ -1361,31 +1577,32 @@
           "refId": "A"
         }
       ],
-      "timeFrom": null,
-      "timeShift": null,
       "title": "Top queries",
       "transform": "timeseries_to_rows",
       "transparent": true,
       "type": "table-old"
     }
   ],
-  "refresh": "10s",
-  "schemaVersion": 26,
-  "style": "dark",
+  "refresh": "",
+  "schemaVersion": 38,
   "tags": [
     "adguard"
   ],
   "templating": {
     "list": [
       {
-        "allValue": null,
-        "current": {},
-        "datasource": "${DS_PROMETHEUS}",
+        "current": {
+          "selected": false,
+          "text": "192.168.8.1",
+          "value": "192.168.8.1"
+        },
+        "datasource": {
+          "type": "prometheus",
+          "uid": "c4a2f5cb-0b86-4c06-90ac-e1835ffce310"
+        },
         "definition": "label_values(adguard_num_dns_queries, hostname)",
-        "error": null,
         "hide": 0,
         "includeAll": false,
-        "label": null,
         "multi": false,
         "name": "node",
         "options": [],
@@ -1395,7 +1612,6 @@
         "skipUrlSync": false,
         "sort": 0,
         "tagValuesQuery": "",
-        "tags": [],
         "tagsQuery": "",
         "type": "query",
         "useTags": false
@@ -1436,5 +1652,6 @@
   "timezone": "",
   "title": "Adguard Exporter",
   "uid": "MIBVglomg",
-  "version": 19
+  "version": 2,
+  "weekStart": ""
 }
