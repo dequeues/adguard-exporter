@@ -1,3 +1,4 @@
+
 # AdguardHome Prometheus Exporter
 
 [![GoDoc](https://godoc.org/github.com/ebrianne/adguard-exporter?status.png)](https://godoc.org/github.com/ebrianne/adguard-exporter)
@@ -60,40 +61,25 @@ $ GOOS=linux GOARCH=arm GOARM=7 go build -o adguard_exporter .
 
 In order to run the exporter, type the following command (arguments are optional):
 
-Using a password
+#### Standalone
+If you are going to run the binary standalone, then you can pass arguments like such:
+```bash
+./adguard_exporter -adguard_protocol https -adguard_hostname 192.168.10.252 -adguard_username admin -adguard_password qwerty -log_limit 10000
+```
 
+#### Docker
+If you are going to use the Docker image, then arguments are passed after the docker run command, for example:
+```bash
+ docker run adguard-docker "-adguard_hostname=192.168.10.252" "-adguard_port=3000"
+ ```
+
+### Authentication
+You will need to pass the `adguard_username` and `-adguard_password` arguments, for example: 
 ```bash
 $ ./adguard_exporter -adguard_protocol https -adguard_hostname 192.168.10.252 -adguard_username admin -adguard_password qwerty -log_limit 10000
 ```
-
-```bash
-2020/11/04 17:16:14 ---------------------------------------
-2020/11/04 17:16:14 - AdGuard Home exporter configuration -
-2020/11/04 17:16:14 ---------------------------------------
-2020/11/04 17:16:14 AdguardProtocol : https
-2020/11/04 17:16:14 AdguardHostname : 192.168.10.252
-2020/11/04 17:16:14 AdguardUsername : admin
-2020/11/04 17:16:14 AdGuard Authentication Method : AdguardPassword
-2020/11/04 17:16:14 ServerPort : 9617
-2020/11/04 17:16:14 Interval : 10s
-2020/11/04 17:16:14 LogLimit : 10000
-2020/11/04 17:16:14 ---------------------------------------
-2020/11/04 17:16:14 New Prometheus metric registered: avg_processing_time
-2020/11/04 17:16:14 New Prometheus metric registered: num_dns_queries
-2020/11/04 17:16:14 New Prometheus metric registered: num_blocked_filtering
-2020/11/04 17:16:14 New Prometheus metric registered: num_replaced_parental
-2020/11/04 17:16:14 New Prometheus metric registered: num_replaced_safebrowsing
-2020/11/04 17:16:14 New Prometheus metric registered: num_replaced_safesearch
-2020/11/04 17:16:14 New Prometheus metric registered: top_queried_domains
-2020/11/04 17:16:14 New Prometheus metric registered: top_blocked_domains
-2020/11/04 17:16:14 New Prometheus metric registered: top_clients
-2020/11/04 17:16:14 New Prometheus metric registered: query_types
-2020/11/04 17:16:14 New Prometheus metric registered: running
-2020/11/04 17:16:14 New Prometheus metric registered: protection_enabled
-2020/11/04 17:16:14 Starting HTTP server
-2020/11/04 17:16:30 New tick of statistics: 3824 ads blocked / 36367 total DNS queries
-```
-
+---
+## Prometheus
 Once the exporter is running, you also have to update your `prometheus.yml` configuration to let it scrape the exporter:
 
 ```yaml
